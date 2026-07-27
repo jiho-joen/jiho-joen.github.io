@@ -98,3 +98,135 @@ body {
   font-weight: 700;
   line-height: 1.4;
 }
+
+.mobile-copyright {
+  display: none;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 767px) {
+  html, body {
+    overflow: visible;
+  }
+
+  body {
+    min-height: 100vh;
+    height: auto;
+    padding: 24px 16px;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: none;
+  }
+
+  .center-logo {
+    position: static;
+    order: 1;
+    margin: 0 0 28px;
+    font-size: 36px;
+    pointer-events: auto;
+  }
+
+  .left-area {
+    order: 2;
+    margin-bottom: 40px;
+  }
+
+  .right-area {
+    order: 3;
+  }
+
+  .left-area,
+  .right-area {
+    opacity: 0;
+    transform: translateY(46px);
+    animation: floatInSettle 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .left-area {
+    animation-delay: 0.1s;
+  }
+
+  .right-area {
+    animation-delay: 0.4s;
+  }
+
+  .left-area.is-settled,
+  .right-area.is-settled {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .left-area.is-shaking,
+  .right-area.is-shaking {
+    animation: clickShake 0.35s ease-in-out;
+  }
+
+  .bottom-info {
+    margin-top: 32px;
+    flex-direction: column;
+  }
+
+  .info-kr {
+    display: none;
+  }
+
+  .info-en {
+    width: 100%;
+  }
+
+  .mobile-copyright {
+    display: block;
+    margin: 20px 0 0;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
+
+@keyframes floatInSettle {
+  0% {
+    opacity: 0;
+    transform: translateY(46px);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+  70% {
+    transform: translateY(3px) translateX(-3px);
+  }
+  82% {
+    transform: translateY(-2px) translateX(2px);
+  }
+  92% {
+    transform: translateY(1px) translateX(-1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes clickShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+}
