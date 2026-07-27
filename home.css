@@ -1,0 +1,100 @@
+:root {
+  --bg: #F4FFF7;
+  --text: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Asta Sans", "Gothic A1", sans-serif;
+  padding: 24px 20px;
+}
+
+@media (min-width: 768px) {
+  body {
+    min-height: 800px;
+  }
+}
+
+/* ---------- Hero ---------- */
+.home {
+  position: relative;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 0;
+}
+
+.center-logo {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* ---------- Works (left) ---------- */
+.works-visual {
+  width: clamp(336px, 43.2vw, 626px);
+  height: auto;
+  display: block;
+  transform-origin: center;
+  transition: transform 0.25s ease-out;
+}
+
+/* ---------- About (right) ---------- */
+.about-visual {
+  width: clamp(312px, 39vw, 562px);
+  height: auto;
+  display: block;
+  transform-origin: center;
+  transition: transform 0.25s ease-out;
+}
+
+/* ---------- Bottom info ---------- */
+.bottom-info {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+}
+
+.info-block {
+  width: calc(50% - 8px);
+  border-top: 2px solid #000000;
+  padding-top: 8px;
+}
+
+.info-block p {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.4;
+}
