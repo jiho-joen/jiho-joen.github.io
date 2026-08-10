@@ -13,7 +13,7 @@ document.getElementById("project-image-wrap").className =
   `project-image-wrap ratio-${project.ratio}`;
 
 const projectImage = document.getElementById("project-image");
-projectImage.src = thumbUrl(project);
+projectImage.src = project.thumbnail || thumbUrl(project);
 projectImage.alt = project.titleEn;
 
 const prevProject = PROJECTS[(index - 1 + PROJECTS.length) % PROJECTS.length];
