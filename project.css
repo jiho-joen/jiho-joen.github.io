@@ -1,7 +1,7 @@
 .project-detail {
   max-width: 860px;
   margin: 0 auto;
-  padding: 8px var(--page-pad) 40px;
+  padding: calc(var(--nav-height) + 16px) var(--page-pad) 40px;
 }
 
 .project-head {
@@ -18,7 +18,8 @@
   margin: 4px 0 0;
   font-size: 18px;
   font-weight: 400;
-  color: #555;
+  color: var(--text);
+  opacity: 0.6;
 }
 
 .project-meta {

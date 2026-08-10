@@ -7,18 +7,20 @@ function renderCards() {
     const card = document.createElement("a");
     card.className = "card";
     card.href = `project.html?id=${project.id}`;
-    card.dataset.category = project.category;
+    card.dataset.categories = project.categories.join(",");
+
+    const tags = project.categories.map((cat) => `<span class="card-tag">${cat}</span>`).join("");
 
     card.innerHTML = `
       <div class="card-image-wrap ratio-${project.ratio}">
-        <img class="card-image" src="${thumbUrl(project)}" alt="${project.titleEn}" loading="lazy">
+        <img class="card-image" src="${project.thumbnail || thumbUrl(project)}" alt="${project.titleEn}" loading="lazy">
       </div>
       <div class="card-info">
         <p class="card-title-kr">${project.titleKr}</p>
         <p class="card-title-en">${project.titleEn}</p>
         <p class="card-year">${project.year}</p>
         <div class="card-tags">
-          <span class="card-tag">${project.category}</span>
+          ${tags}
         </div>
       </div>
     `;
@@ -29,7 +31,8 @@ function renderCards() {
 
 function applyFilter(category) {
   document.querySelectorAll(".card").forEach((card) => {
-    const show = category === "all" || card.dataset.category === category;
+    const categories = card.dataset.categories.split(",");
+    const show = category === "all" || categories.includes(category);
     card.classList.toggle("hidden", !show);
   });
 }

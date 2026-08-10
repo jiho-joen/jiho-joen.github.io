@@ -8,16 +8,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@400;500;700;800&family=Gothic+A1:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="cursor.css">
 </head>
 <body>
+
+<header class="top-nav">
+  <a class="logo" href="index.html">Oho</a>
+</header>
 
 <main class="home">
 
   <a class="side left-area" href="works.html" aria-label="Works">
     <img class="works-visual" src="home_button_w.svg" alt="">
   </a>
-
-  <h1 class="center-logo">Oho</h1>
 
   <a class="side right-area" href="about.html" aria-label="About">
     <img class="about-visual" src="home_button_A.svg" alt="">
@@ -27,17 +30,18 @@
 
 <footer class="bottom-info">
   <div class="info-block info-kr">
-    <p>서울 34°C</p>
-    <p>양산 34°C</p>
+    <p>서울 <span class="temp" data-city="seoul">--°C</span></p>
+    <p>양산 <span class="temp" data-city="yangsan">--°C</span></p>
   </div>
   <div class="info-block info-en">
-    <p>SEOUL 34°C</p>
-    <p>YANGSAN 34°C</p>
+    <p>SEOUL <span class="temp" data-city="seoul">--°C</span></p>
+    <p>YANGSAN <span class="temp" data-city="yangsan">--°C</span></p>
   </div>
 </footer>
 
 <p class="mobile-copyright">© 2026 OHO STUDIO<br>ALL RIGHTS RESERVED.</p>
 
+<script src="cursor.js"></script>
 <script src="home.js"></script>
 </body>
 </html>

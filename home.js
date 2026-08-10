@@ -47,3 +47,58 @@ function attachShakeNavigate(link) {
 
 attachShakeNavigate(document.querySelector(".left-area"));
 attachShakeNavigate(document.querySelector(".right-area"));
+
+/* ---------- Weather (footer) ---------- */
+const WEATHER_CITIES = [
+  { key: "seoul", lat: 37.5665, lon: 126.978 },
+  { key: "yangsan", lat: 35.335, lon: 129.1378 },
+];
+const WEATHER_CACHE_KEY = "oho-weather-cache";
+const WEATHER_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+
+function applyWeather(temps) {
+  Object.entries(temps).forEach(([city, value]) => {
+    document.querySelectorAll(`.temp[data-city="${city}"]`).forEach((el) => {
+      el.textContent = `${value}°C`;
+    });
+  });
+}
+
+async function updateWeather() {
+  try {
+    const cached = JSON.parse(sessionStorage.getItem(WEATHER_CACHE_KEY) || "null");
+    if (cached && Date.now() - cached.timestamp < WEATHER_CACHE_TTL) {
+      applyWeather(cached.temps);
+      return;
+    }
+  } catch (e) {
+    /* ignore malformed cache */
+  }
+
+  const lat = WEATHER_CITIES.map((c) => c.lat).join(",");
+  const lon = WEATHER_CITIES.map((c) => c.lon).join(",");
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m&timezone=Asia%2FSeoul`;
+
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Weather request failed: ${res.status}`);
+    const data = await res.json();
+    const list = Array.isArray(data) ? data : [data];
+
+    const temps = {};
+    WEATHER_CITIES.forEach((city, i) => {
+      const value = list[i]?.current?.temperature_2m;
+      if (typeof value === "number") temps[city.key] = Math.round(value);
+    });
+
+    applyWeather(temps);
+    sessionStorage.setItem(
+      WEATHER_CACHE_KEY,
+      JSON.stringify({ temps, timestamp: Date.now() })
+    );
+  } catch (err) {
+    console.warn("Weather update failed:", err);
+  }
+}
+
+updateWeather();
