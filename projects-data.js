@@ -22,7 +22,7 @@ const PROJECTS = [
     summary: "", body: "" },
   { id: 6, titleKr: "일하는 것을 멈추지 마", titleEn: "Keep working.", year: 2026, categories: ["Lettering"], ratio: "square", thumbnail: "assets/works/6_thumb.webp",
     summary: "", body: "" },
-  { id: 7, titleKr: "멸종,위기,사랑(팬아트)", titleEn: "Endangered Love(Fan Art)", year: 2026, categories: ["Lettering"], ratio: "square", thumbnail: "assets/works/7_thumb.webp",
+  { id: 7, titleKr: "멸종,위기,사랑(팬아트)", titleEn: "Endangered Love(Fan Art)", year: 2026, categories: ["Lettering", "Editorial"], ratio: "square", thumbnail: "assets/works/7_thumb.webp",
     summary: "", body: "" },
   { id: 8, titleKr: "바지락", titleEn: "Bajirak' is also a 'rak'", year: 2026, categories: ["Lettering"], ratio: "square", thumbnail: "assets/works/8_thumb.webp",
     summary: "", body: "" },
