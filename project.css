@@ -79,6 +79,9 @@
 }
 
 .pager-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 15px;
   color: var(--text);
   text-decoration: none;
@@ -102,5 +105,17 @@
   .project-summary,
   .project-desc {
     font-size: 14px;
+  }
+
+  .pager-title {
+    display: none;
+  }
+
+  .pager-btn {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    padding: 8px 14px;
+    font-size: 20px;
   }
 }

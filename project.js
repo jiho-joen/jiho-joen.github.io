@@ -23,7 +23,11 @@ const prevBtn = document.getElementById("pager-prev");
 const nextBtn = document.getElementById("pager-next");
 
 prevBtn.href = `project.html?id=${prevProject.id}`;
-prevBtn.textContent = `← ${prevProject.titleEn}`;
+prevBtn.setAttribute("aria-label", `Previous: ${prevProject.titleEn}`);
+prevBtn.innerHTML = `<span class="pager-arrow" aria-hidden="true">←</span><span class="pager-title"></span>`;
+prevBtn.querySelector(".pager-title").textContent = prevProject.titleEn;
 
 nextBtn.href = `project.html?id=${nextProject.id}`;
-nextBtn.textContent = `${nextProject.titleEn} →`;
+nextBtn.setAttribute("aria-label", `Next: ${nextProject.titleEn}`);
+nextBtn.innerHTML = `<span class="pager-title"></span><span class="pager-arrow" aria-hidden="true">→</span>`;
+nextBtn.querySelector(".pager-title").textContent = nextProject.titleEn;
