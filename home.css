@@ -39,8 +39,20 @@ body {
   mix-blend-mode: difference;
 }
 
+.nav-placeholder {
+  visibility: hidden;
+  font-size: 18px;
+}
+
+.nav-left {
+  justify-self: start;
+}
+
+.nav-right {
+  justify-self: end;
+}
+
 .logo {
-  grid-column: 2;
   justify-self: center;
   font-size: 20px;
   font-weight: 600;
