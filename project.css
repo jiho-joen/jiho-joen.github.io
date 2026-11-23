@@ -64,6 +64,110 @@
   object-fit: cover;
 }
 
+.project-image-wrap[hidden],
+.project-book[hidden] {
+  display: none;
+}
+
+.project-book {
+  width: 100%;
+  margin-block: 8px 24px;
+}
+
+.project-book-canvas {
+  display: block;
+  width: 100%;
+  filter: drop-shadow(0 2px 3px rgba(15, 25, 22, 0.21));
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.project-book-controls {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.project-book-controls > button {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 18px;
+}
+
+.project-book-controls > button:hover:not([aria-disabled="true"]) {
+  background: rgba(17, 17, 17, 0.06);
+}
+
+.project-book-controls > button[aria-disabled="true"] {
+  opacity: 0.36;
+}
+
+.project-book-controls :is(button, input):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.project-book-position {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.project-book-position input {
+  box-sizing: border-box;
+  width: 3.25em;
+  height: 44px;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 16px;
+  text-align: center;
+  appearance: textfield;
+  cursor: text !important;
+}
+
+.project-book-position input::-webkit-inner-spin-button,
+.project-book-position input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.project-book-go {
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer !important;
+}
+
+.project-book-error {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 13px;
+}
+
+.project-book-error:empty {
+  margin: 0;
+}
+
 .project-desc {
   margin-top: 24px;
   font-size: 16px;
@@ -117,5 +221,23 @@
     justify-content: center;
     padding: 8px 14px;
     font-size: 20px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-book-canvas {
+    cursor: grab !important;
+  }
+
+  .project-book-canvas:active {
+    cursor: grabbing !important;
+  }
+
+  .project-book-controls > button[aria-disabled="false"] {
+    cursor: pointer !important;
+  }
+
+  body:has(.project-book-canvas:hover, .project-book-controls :is(button, input):hover) .custom-cursor {
+    opacity: 0;
   }
 }

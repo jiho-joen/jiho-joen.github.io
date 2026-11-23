@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@400;500;700;800&family=Gothic+A1:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="works.css?v=20261123-3">
-<link rel="stylesheet" href="project.css?v=20261123-2">
+<link rel="stylesheet" href="project.css?v=20261124-1">
 <link rel="stylesheet" href="cursor.css?v=20260811-2">
 </head>
 <body>
@@ -34,6 +34,21 @@
     <img class="project-image" id="project-image" alt="">
   </div>
 
+  <section class="project-book" id="project-book" aria-label="얼어죽어도 테니스 책 보기" hidden>
+    <canvas class="project-book-canvas" aria-hidden="true"></canvas>
+    <p class="project-book-error" role="status"></p>
+    <div class="project-book-controls">
+      <button type="button" data-book-prev aria-label="이전 페이지">←</button>
+      <form class="project-book-position" data-book-jump>
+        <input type="number" min="1" step="1" inputmode="numeric" enterkeyhint="go" required
+          data-book-page aria-label="이동할 페이지 번호" aria-describedby="project-book-total">
+        <span id="project-book-total" data-book-total></span>
+        <button type="submit" class="project-book-go">이동</button>
+      </form>
+      <button type="button" data-book-next aria-label="다음 페이지">→</button>
+    </div>
+  </section>
+
   <p class="project-desc" id="project-desc"></p>
 </main>
 
@@ -48,7 +63,7 @@
 </footer>
 
 <script src="cursor.js?v=20260811-2"></script>
-<script src="projects-data.js?v=20261123-3"></script>
-<script src="project.js?v=20261123-3"></script>
+<script src="projects-data.js?v=20261124-1"></script>
+<script src="project.js?v=20261124-1"></script>
 </body>
 </html>

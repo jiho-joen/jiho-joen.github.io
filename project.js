@@ -63,3 +63,14 @@ function renderPagerLabels() {
 
 renderPagerLabels();
 mobilePager.addEventListener("change", renderPagerLabels);
+
+if (project.book) {
+  const viewer = document.createElement("script");
+  viewer.src = "project-book.js?v=20261124-1";
+  viewer.onload = () => mountProjectBook(
+    document.getElementById("project-book"),
+    project.book,
+    document.getElementById("project-image-wrap")
+  );
+  document.head.append(viewer);
+}
