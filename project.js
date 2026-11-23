@@ -24,10 +24,42 @@ const nextBtn = document.getElementById("pager-next");
 
 prevBtn.href = `project.html?id=${prevProject.id}`;
 prevBtn.setAttribute("aria-label", `Previous: ${prevProject.titleEn}`);
-prevBtn.innerHTML = `<span class="pager-arrow" aria-hidden="true">←</span><span class="pager-title"></span>`;
-prevBtn.querySelector(".pager-title").textContent = prevProject.titleEn;
 
 nextBtn.href = `project.html?id=${nextProject.id}`;
 nextBtn.setAttribute("aria-label", `Next: ${nextProject.titleEn}`);
-nextBtn.innerHTML = `<span class="pager-title"></span><span class="pager-arrow" aria-hidden="true">→</span>`;
-nextBtn.querySelector(".pager-title").textContent = nextProject.titleEn;
+
+const mobilePager = window.matchMedia("(max-width: 767px)");
+
+function renderPagerLabels() {
+  prevBtn.replaceChildren();
+  nextBtn.replaceChildren();
+
+  const prevArrow = document.createElement("span");
+  prevArrow.className = "pager-arrow";
+  prevArrow.setAttribute("aria-hidden", "true");
+  prevArrow.textContent = "←";
+
+  const nextArrow = document.createElement("span");
+  nextArrow.className = "pager-arrow";
+  nextArrow.setAttribute("aria-hidden", "true");
+  nextArrow.textContent = "→";
+
+  prevBtn.appendChild(prevArrow);
+
+  if (!mobilePager.matches) {
+    const prevTitle = document.createElement("span");
+    prevTitle.className = "pager-title";
+    prevTitle.textContent = prevProject.titleEn;
+    prevBtn.appendChild(prevTitle);
+
+    const nextTitle = document.createElement("span");
+    nextTitle.className = "pager-title";
+    nextTitle.textContent = nextProject.titleEn;
+    nextBtn.appendChild(nextTitle);
+  }
+
+  nextBtn.appendChild(nextArrow);
+}
+
+renderPagerLabels();
+mobilePager.addEventListener("change", renderPagerLabels);
