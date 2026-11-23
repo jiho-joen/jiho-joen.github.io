@@ -1,5 +1,13 @@
 const grid = document.getElementById("grid");
+const filters = document.getElementById("filters");
 const filterButtons = document.querySelectorAll(".filter-btn");
+
+function updateFilterBarMode() {
+  filters.classList.toggle("is-stuck", window.scrollY > 0);
+}
+
+updateFilterBarMode();
+window.addEventListener("scroll", updateFilterBarMode, { passive: true });
 
 function renderCards() {
   grid.innerHTML = "";

@@ -69,18 +69,29 @@ body {
 
 /* ---------- Filters ---------- */
 .filters {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 90;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0;
-  padding: calc(var(--nav-height) + 12px) var(--page-pad) 20px;
+  margin-top: var(--nav-height);
+  padding: 12px var(--page-pad) 20px;
+  color: var(--text);
+  background: transparent;
+}
+
+.filters.is-stuck {
+  color: #ffffff;
+  mix-blend-mode: difference;
 }
 
 .filter-btn,
 .card-tag {
   font-family: inherit;
   font-size: 15px;
-  color: var(--text);
+  color: inherit;
   background: transparent;
   border: 0;
   padding: 6px 16px;
@@ -94,7 +105,7 @@ body {
 }
 
 .filter-btn:hover {
-  color: color-mix(in srgb, var(--text) 90%, white);
+  color: inherit;
   background: transparent;
   opacity: 1;
 }
@@ -102,6 +113,11 @@ body {
 .filter-btn.active {
   background: var(--text);
   color: var(--bg);
+}
+
+.filters.is-stuck .filter-btn.active {
+  background: #ffffff;
+  color: #000000;
 }
 
 /* ---------- Grid ---------- */
@@ -274,7 +290,7 @@ body {
 
   .filters {
     gap: 0;
-    padding: calc(var(--nav-height) + 10px) var(--page-pad) 16px;
+    padding: 10px var(--page-pad) 16px;
   }
 
   .filter-btn {
