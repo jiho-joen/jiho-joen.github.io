@@ -42,7 +42,7 @@ const PROJECTS = [
     summary: "", body: "" },
   { id: 16, titleKr: "미스터리 소설 북커버 일러스트 10종", titleEn: "10 Mystery Novel Book Cover Illustrations", year: 2023, categories: ["Illustration"], ratio: "square", thumbnail: "assets/works/16_thumb.webp",
     summary: "", body: "" },
-  { id: 17, titleKr: "얼어죽어도 테니스", titleEn: "겨울 테니스에 대한 진", year: 2024, categories: ["Graphic", "Lettering"], ratio: "square", thumbnail: "assets/works/17_tennis_of_winter_thumb.png",
+  { id: 17, titleKr: "얼어죽어도 테니스", titleEn: "겨울 테니스에 대한 진", year: 2024, categories: ["Graphic", "Lettering", "Editorial"], ratio: "square", thumbnail: "assets/works/17_tennis_of_winter_thumb.png",
     summary: "", body: "" },
 ];
 
